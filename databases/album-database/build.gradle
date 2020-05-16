@@ -1,0 +1,18 @@
+
+buildscript {
+    dependencies {
+        classpath "mysql:mysql-connector-java:$mysqlVersion"
+    }
+}
+
+plugins {
+    id "org.flywaydb.flyway" version "5.2.1"
+}
+
+apply from: "../db.gradle"
+
+flyway {
+    url = "jdbc:mysql://localhost:3306/albums?useSSL=false&allowPublicKeyRetrieval=true&password=password"
+    user = "root"
+    outOfOrder = false
+}
