@@ -1,3 +1,4 @@
+/*
 package org.superbiz.moviefun.movies;
 
 import org.springframework.stereotype.Component;
@@ -21,3 +22,4 @@ public class MovieFixtures {
         );
     }
 }
+*/

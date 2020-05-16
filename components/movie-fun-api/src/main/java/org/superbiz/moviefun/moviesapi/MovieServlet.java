@@ -14,15 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.superbiz.moviefun;
+package org.superbiz.moviefun.moviesapi;
 
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.superbiz.moviefun.movies.Movie;
-import org.superbiz.moviefun.movies.MoviesBean;
+ import org.springframework.util.StringUtils;
 
-import javax.servlet.ServletException;
+ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,7 +38,7 @@ public class MovieServlet extends HttpServlet {
     public static int PAGE_SIZE = 5;
 
     @Autowired
-    private MoviesBean moviesBean;
+    private MoviesClient moviesBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -63,7 +61,7 @@ public class MovieServlet extends HttpServlet {
             int rating = Integer.parseInt(request.getParameter("rating"));
             int year = Integer.parseInt(request.getParameter("year"));
 
-            Movie movie = new Movie(title, director, genre, rating, year);
+            MovieInfo movie = new MovieInfo(null, title, director, genre, rating, year);
 
             moviesBean.addMovie(movie);
             response.sendRedirect("moviefun");
@@ -114,7 +112,7 @@ public class MovieServlet extends HttpServlet {
             }
 
             int start = (page - 1) * PAGE_SIZE;
-            List<Movie> range;
+            List<MovieInfo> range;
 
             if (StringUtils.isEmpty(key) || StringUtils.isEmpty(field)) {
                 range = moviesBean.findAll(start, PAGE_SIZE);

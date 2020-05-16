@@ -30,14 +30,20 @@ public class S3Store implements BlobStore {
 
     @Override
     public Optional<Blob> get(String name) throws IOException {
+
+        System.out.println("FILE NAME =" + name + ", bucket name = " + bucketName);
         if (!s3.doesObjectExist(bucketName, name)) {
+            System.out.println("EMPTY " + s3);
             return Optional.empty();
         }
 
         S3Object s3Object = s3.getObject(bucketName, name);
+        System.out.println("s3Object " + s3Object);
+
         S3ObjectInputStream content = s3Object.getObjectContent();
 
         byte[] bytes = IOUtils.toByteArray(content);
+        System.out.println("bytes " + bytes);
 
         return Optional.of(new Blob(
             name,

@@ -29,7 +29,7 @@ public class AlbumsUpdater {
         this.blobStore = blobStore;
         this.albumsBean = albumsBean;
 
-        CsvSchema schema = CsvSchema.builder()
+        CsvSchema    schema = CsvSchema.builder()
             .addColumn("artist")
             .addColumn("title")
             .addColumn("year", NUMBER)

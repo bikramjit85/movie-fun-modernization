@@ -21,15 +21,15 @@ import java.util.Optional;
 import static java.lang.String.format;
 import static org.springframework.http.MediaType.IMAGE_JPEG_VALUE;
 
-@Controller
-@RequestMapping("/albums")
-public class AlbumsController {
+//@Controller
+//@RequestMapping("/albums")
+public class AlbumsController1 {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final AlbumsBean albumsBean;
     private final BlobStore blobStore;
 
-    public AlbumsController(AlbumsBean albumsBean, BlobStore blobStore) {
+    public AlbumsController1(AlbumsBean albumsBean, BlobStore blobStore) {
         this.albumsBean = albumsBean;
         this.blobStore = blobStore;
     }
