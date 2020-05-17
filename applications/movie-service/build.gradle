@@ -24,7 +24,7 @@ dependencies {
     // See https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Migration-Guide#oauth2
     compile "org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:$springSecurityOAuthAutoconfigVersion"
     compile "io.pivotal.spring.cloud:spring-cloud-sso-connector:$springCloudSsoVersion"
-    //compile "io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry"
+    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry"
 
     compile "mysql:mysql-connector-java:8.0.19"
     compile "org.hibernate:hibernate-core:$hibernateVersion"

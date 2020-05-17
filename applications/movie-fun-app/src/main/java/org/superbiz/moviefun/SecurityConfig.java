@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Qualifier("RestOperations")
     @Bean
-    //@LoadBalanced
+    @LoadBalanced
     public RestOperations restTemplate(OAuth2ProtectedResourceDetails resource, OAuth2ClientContext oauth2ClientContext) {
 
         System.out.println("RESTTEMPLATE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4");
