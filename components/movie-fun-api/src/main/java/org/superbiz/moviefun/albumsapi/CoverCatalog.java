@@ -1,6 +1,7 @@
 package org.superbiz.moviefun.albumsapi;
 
 //import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -34,7 +35,7 @@ public class CoverCatalog {
         blobStore.put(coverBlob);
     }
 
-  //  @CircuitBreaker(name = "albumCover", fallbackMethod = "buildDefaultCoverBlob")
+   @CircuitBreaker(name = "albumCover", fallbackMethod = "buildDefaultCoverBlob")
     public Blob getCover(long albumId) throws IOException {
         Optional<Blob> maybeCoverBlob = blobStore.get(coverBlobName(albumId));
 

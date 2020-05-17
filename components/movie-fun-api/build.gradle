@@ -11,4 +11,7 @@ dependencies {
 
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 
+    compile "io.github.resilience4j:resilience4j-annotations:1.2.0"
+
+
 }

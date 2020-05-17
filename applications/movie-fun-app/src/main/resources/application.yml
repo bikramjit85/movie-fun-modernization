@@ -19,3 +19,19 @@ s3:
   accessKey: <access key id>
   secretKey: <secret access key>
   bucketName: <name of the bucket>
+
+
+# To expose actuator endpoints - NOT FOR PRODUCTION USE
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,circuitbreakers
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+    hystrix:
+      enabled: false

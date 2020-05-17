@@ -1,26 +1,5 @@
 ---
 applications:
-  - name: album-service
-    path: applications/album-service/build/libs/album-service-1.1.0-SNAPSHOT.jar
-    routes:
-      - route: album-service-pal-arch1-pcf1.cfapps.io
-    services:
-      - album-database
-      - photo-storage
-      - movie-fun-sso
-      - movie-fun-registry
-    env:
-      GRANT_TYPE: client_credentials
-  - name: movie-service
-    path: applications/movie-service/build/libs/movie-service-1.1.0-SNAPSHOT.jar
-    routes:
-      - route: movie-service-pal-arch1-pcf1.cfapps.io
-    services:
-      - movie-database
-      - movie-fun-sso
-      - movie-fun-registry
-    env:
-     GRANT_TYPE: client_credentials
   - name: movie-fun-app
     path: applications/movie-fun-app/build/libs/movie-fun-app-1.1.0-SNAPSHOT.war
     routes:
