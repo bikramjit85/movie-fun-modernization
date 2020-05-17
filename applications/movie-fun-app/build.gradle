@@ -1,3 +1,21 @@
+
+apply plugin: "war"
+apply plugin: "org.springframework.boot"
+apply plugin: "io.spring.dependency-management"
+apply from: "../../java.gradle"
+
+group = "org.superbiz"
+version = "1.1.0-SNAPSHOT"
+
+description = "OpenEJB :: Web Examples :: Moviefun"
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
+        mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:$springCloudServicesClientLibrariesVersion"
+    }
+}
+
 buildscript {
     ext {
         springBootVersion = "2.0.6.RELEASE"
@@ -14,16 +32,6 @@ buildscript {
     }
 }
 
-
-apply plugin: "war"
-apply plugin: "org.springframework.boot"
-apply plugin: "io.spring.dependency-management"
-apply from: "../../java.gradle"
-
-group = "org.superbiz"
-version = "1.1.0-SNAPSHOT"
-
-description = "OpenEJB :: Web Examples :: Moviefun"
 
 
 test {
@@ -52,6 +60,12 @@ dependencies {
     compile "org.apache.tomcat.embed:tomcat-embed-jasper:8.5.6"
     compile "org.apache.geronimo.specs:geronimo-osgi-locator:1.1"
     compile "org.apache.geronimo.components:geronimo-jaspi:2.0.0"
+
+    // See https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Migration-Guide#oauth2
+    compile "org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:$springSecurityOAuthAutoconfigVersion"
+    compile "io.pivotal.spring.cloud:spring-cloud-sso-connector:$springCloudSsoVersion"
+
+    compile "org.springframework.security:spring-security-taglibs"
 
     testCompile "junit:junit:4.12"
 

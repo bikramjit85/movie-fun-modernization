@@ -1,5 +1,6 @@
 package org.superbiz.moviefun;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,18 +17,13 @@ public class ClientConfiguration {
     @Value("${albums.url}") String albumUrl;
 
     @Bean
-    public RestOperations restOperations() {
-        return new RestTemplate();
-    }
-
-    @Bean
-    public MoviesClient moviesClient(RestOperations restOperations) {
+    public MoviesClient moviesClient(@Qualifier("RestOperations")  RestOperations restOperations) {
         return new MoviesClient(moviesUrl, restOperations);
     }
 
 
     @Bean
-    public AlbumsClient albumsClient(RestOperations restOperations) {
+    public AlbumsClient albumsClient(@Qualifier("RestOperations") RestOperations restOperations) {
         return new AlbumsClient(albumUrl, restOperations);
     }
 }
